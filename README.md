@@ -64,6 +64,12 @@ This project was created using Kotlin, utilizing RecylerView, Paging 3 and Retro
 Provided from
 [Rawg.io Api](https://rawg.io/apidocs)
 
+<!-- ROADMAP -->
+## TO-DO
+
+- [ ] Complete the search feature
+- [ ] Complete favorite games feature using Dynamic Feature Module
+
 <!-- CONTACT -->
 ## Contact
 
