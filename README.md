@@ -59,12 +59,17 @@ This project was created using Kotlin, utilizing RecylerView, Paging 3 and Retro
 * [Room](https://developer.android.com/jetpack/androidx/releases/room)
 * [Dagger Hilt](https://dagger.dev/hilt)
 
+### Data Source
+
+Provided from
+[Rawg.io Api](https://rawg.io/apidocs)
+
 <!-- CONTACT -->
 ## Contact
 
 - Aditasha | [Twitter](https://twitter.com/aditashaa) | aditasha9@gmail.com
 
-Project Link: [https://github.com/aditasha/dicoding-story](https://github.com/aditasha/dicoding-story)
+Project Link: [https://github.com/aditasha/rawg.io-app](https://github.com/aditasha/rawg.io-app)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
