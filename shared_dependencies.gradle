@@ -1,0 +1,23 @@
+dependencies {
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appCompatVersion}"
+    implementation "androidx.core:core-ktx:${rootProject.ext.coreKtxVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintVersion}"
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.androidxJunitVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCoreVersion}"
+
+    implementation "androidx.cardview:cardview:${rootProject.ext.cardviewVersion}"
+    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.recyclerviewVersion}"
+    implementation "com.google.android.material:material:${rootProject.ext.materialVersion}"
+    implementation "com.github.bumptech.glide:glide:${rootProject.ext.glideVersion}"
+    kapt "com.github.bumptech.glide:compiler:${rootProject.ext.glideVersion}"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:${rootProject.ext.swipeRefreshVersion}"
+
+    //dagger
+    implementation "com.google.dagger:hilt-android:${rootProject.ext.hiltVersion}"
+    kapt "com.google.dagger:hilt-compiler:${rootProject.ext.hiltVersion}"
+    kapt "androidx.hilt:hilt-compiler:${rootProject.ext.hiltJetpackVersion}"
+    implementation "androidx.hilt:hilt-navigation-fragment:${rootProject.ext.hiltJetpackVersion}"
+
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:${rootProject.ext.desugarVersion}"
+}

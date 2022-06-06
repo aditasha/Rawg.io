@@ -1,0 +1,76 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.Rawgio" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/black_500</item>
+        <item name="colorPrimaryVariant">@color/black_200</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/black_200</item>
+        <item name="colorOnSecondary">@color/black_500</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:windowBackground">?attr/colorPrimary</item>
+        <item name="checkboxStyle">@style/CheckBox</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/gray</item>
+        <item name="colorOnSurfaceInverse">@color/black_200</item>
+    </style>
+
+    <style name="BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+
+    </style>
+
+    <style name="ItemIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/black_200</item>
+    </style>
+
+    <style name="FontStyleBold" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="AppBar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/AppBarOverlay</item>
+        <item name="titleTextAppearance">@style/FontStyleBold</item>
+    </style>
+
+    <style name="Toolbar" parent="Widget.Material3.CollapsingToolbar.Large">
+        <item name="materialThemeOverlay">@style/AppBarOverlay</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="">
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/TextInputLayoutOverlay</item>
+        <item name="shapeAppearanceOverlay">@style/RoundedShapeOverlay</item>
+    </style>
+
+    <style name="TextInputLayoutOverlay" parent="">
+        <item name="android:padding">0dp</item>
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.OutlinedBox</item>
+    </style>
+
+    <style name="RoundedShapeOverlay" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+    </style>
+
+    <style name="CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="materialThemeOverlay">@style/CheckBoxOverlay</item>
+    </style>
+
+    <style name="CheckBoxOverlay" parent="">
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+</resources>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Rawg.io</string>
+
+    <string name="upper_name">RAWG.io</string>
+    <string name="sub_title_rating">Based on Rawg\'s rating</string>
+    <string name="title_released">Newly Released</string>
+    <string name="title_popularity">By User\'s Popularity</string>
+    <string name="title_favorites">Favorite Game</string>
+
+    <string name="search">Search games</string>
+    <string name="empty_recycler">No data to be shown at the moment</string>
+    <string name="close_dialog">Close</string>
+    <string name="error">Oops,\n%1s</string>
+
+    <string name="blank">%1s</string>
+    <string name="platforms">Platforms</string>
+    <string name="genres">Genres</string>
+    <string name="developers">Developers</string>
+    <string name="publishers">Publishers</string>
+    <string name="released">Released</string>
+    <string name="rating">Rating</string>
+    <string name="rating_count">Count: %1s rating</string>
+    <string name="added">Added</string>
+    <string name="about">About</string>
+    <string name="website">Website</string>
+    <string name="screenshots">Screenshots</string>
+    <string name="https_rawg_io">https://rawg.io/</string>
+    <string name="data_source">Data source</string>
+</resources>

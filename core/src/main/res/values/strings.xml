@@ -1,0 +1,7 @@
+<resources>
+    <string name="added_list_games">Added by\n%1$s Rawg user\'s</string>
+    <string name="released_list_games">Released date\n%1$s</string>
+    <string name="genres_list_games">Genres\n%1$s</string>
+    <string name="retry_list_games">Retry</string>
+    <string name="close_dialog_list_games">Close</string>
+</resources>

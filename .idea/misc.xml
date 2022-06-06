@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/activity_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/bottom_navigation_style.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/icon_added.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/icon_favorites.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/icon_favorites_24.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/icon_favorites_border.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/icon_rating.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/icon_released.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/drawable/icon_search.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/activity_detail.xml" value="0.264" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/fragment_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/fragment_popularity.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/fragment_released.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/item_list_screenshot.xml" value="0.4" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/list_detail_viewholder.xml" value="0.2734375" />
+        <entry key="..\:/Rawgio/app/src/main/res/layout/scroll_detail.xml" value="0.2734375" />
+        <entry key="..\:/Rawgio/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/app/src/main/res/menu/top_app_bar.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/app/src/main/res/menu/top_app_bar_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/core/src/main/res/drawable/favorite_button.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/core/src/main/res/drawable/favorite_button_border.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/core/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/core/src/main/res/drawable/icon_down.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/core/src/main/res/drawable/icon_favorites.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/core/src/main/res/drawable/icon_favorites_border.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/core/src/main/res/drawable/icon_up.xml" value="0.2265" />
+        <entry key="..\:/Rawgio/core/src/main/res/layout/expandable_layout.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/core/src/main/res/layout/item_list_games.xml" value="0.27447916666666666" />
+        <entry key="..\:/Rawgio/core/src/main/res/layout/loading_layout.xml" value="0.27447916666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

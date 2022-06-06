@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_released">
+
+    <fragment
+        android:id="@+id/navigation_released"
+        android:name="com.aditasha.rawgio.ui.released.ReleasedFragment"
+        android:label="@string/upper_name"
+        tools:layout="@layout/fragment_popularity" >
+        <action
+            android:id="@+id/action_navigation_released_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_popularity"
+        android:name="com.aditasha.rawgio.ui.popularity.PopularityFragment"
+        android:label="@string/upper_name"
+        tools:layout="@layout/fragment_released" >
+        <action
+            android:id="@+id/action_navigation_popularity_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.aditasha.rawgio.ui.detail.DetailActivity"
+        android:label="DetailActivity" >
+        <argument
+            android:name="game"
+            app:argType="com.aditasha.rawgio.core.presentation.model.GamePresentation" />
+    </activity>
+</navigation>
