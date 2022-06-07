@@ -7,63 +7,63 @@
     android:background="@color/black_500"
     android:fitsSystemWindows="true">
 
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:id="@+id/topAppBar"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fitsSystemWindows="true">-->
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:id="@+id/topAppBar"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fitsSystemWindows="true">-->
 
-<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
-<!--            style="?attr/collapsingToolbarLayoutLargeStyle"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"-->
-<!--            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"-->
-<!--            app:contentScrim="?attr/colorPrimary">-->
+    <!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+    <!--            style="?attr/collapsingToolbarLayoutLargeStyle"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"-->
+    <!--            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"-->
+    <!--            app:contentScrim="?attr/colorPrimary">-->
 
-<!--            <ImageView-->
-<!--                android:id="@+id/bg_game"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:scaleType="centerCrop"-->
-<!--                android:fitsSystemWindows="true" />-->
+    <!--            <ImageView-->
+    <!--                android:id="@+id/bg_game"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:scaleType="centerCrop"-->
+    <!--                android:fitsSystemWindows="true" />-->
 
-<!--            <com.google.android.material.appbar.MaterialToolbar-->
-<!--                android:id="@+id/materialToolbar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:elevation="0dp"-->
-<!--                app:menu="@menu/top_app_bar"-->
-<!--                style="@style/AppBar"-->
-<!--                app:titleCentered="true"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                app:layout_collapseMode="pin"/>-->
+    <!--            <com.google.android.material.appbar.MaterialToolbar-->
+    <!--                android:id="@+id/materialToolbar"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:elevation="0dp"-->
+    <!--                app:menu="@menu/top_app_bar"-->
+    <!--                style="@style/AppBar"-->
+    <!--                app:titleCentered="true"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                app:layout_collapseMode="pin"/>-->
 
-<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+    <!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
 
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:background="@color/black_500"
         android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/top_app_bar"
         style="@style/AppBar"
-        app:titleCentered="true"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/top_app_bar"
+        app:titleCentered="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:paddingVertical="0dp"
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="?android:attr/windowBackground"
+        android:paddingVertical="0dp"
+        app:itemActiveIndicatorStyle="@style/ItemIndicator"
         app:itemIconTint="@drawable/bottom_navigation_style"
         app:itemTextColor="@drawable/bottom_navigation_style"
-        app:itemActiveIndicatorStyle="@style/ItemIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

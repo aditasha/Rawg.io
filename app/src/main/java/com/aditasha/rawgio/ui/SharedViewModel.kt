@@ -1,23 +1,20 @@
 package com.aditasha.rawgio.ui
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import androidx.paging.map
-import com.aditasha.rawgio.core.domain.model.Game
+import com.aditasha.rawgio.MainActivity.Companion.DEFAULT
+import com.aditasha.rawgio.MainActivity.Companion.QUERY
+import com.aditasha.rawgio.MainActivity.Companion.SEARCH
 import com.aditasha.rawgio.core.domain.usecase.GameUseCase
-import com.aditasha.rawgio.core.presentation.model.GamePresentation
 import com.aditasha.rawgio.core.utils.DataMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(private val gameUseCase: GameUseCase) : ViewModel() {
@@ -25,17 +22,8 @@ class SharedViewModel @Inject constructor(private val gameUseCase: GameUseCase) 
     private val queryFlow = MutableStateFlow("")
     private val queryKey = mutableMapOf<String, String>()
 
-    var fromFragment = ""
-
-    init {
-        viewModelScope.launch {
-            if (!queryKey.containsKey(QUERY)) {
-                queryKey[QUERY] = RELEASED
-                queryFlow.emit(RELEASED)
-                fromFragment = RELEASED
-            }
-        }
-    }
+    var searchQuery = ""
+    var requestedList = MutableStateFlow(DEFAULT)
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val gameList = queryFlow
@@ -43,12 +31,23 @@ class SharedViewModel @Inject constructor(private val gameUseCase: GameUseCase) 
         .map { DataMapper.pagingDataDomainToPresentation(it) }
         .cachedIn(viewModelScope)
 
-    fun addQuery(request: String) {
-        if (!checkQuery(request)) return
+    fun addQuery(request: String, frag: String? = null) {
+        if (request == SEARCH) {
+            if (!checkQuery(searchQuery)) return
+        } else {
+            if (!checkQuery(request)) return
+        }
         viewModelScope.launch {
-            queryKey[QUERY] = request
-            queryFlow.emit(request)
-            fromFragment = request
+            if (request == SEARCH && frag != null) {
+                queryKey[QUERY] = searchQuery
+                queryFlow.emit(searchQuery)
+                requestedList.emit(frag)
+            } else {
+                queryKey[QUERY] = request
+                queryFlow.emit(request)
+                requestedList.emit(request)
+            }
+
         }
     }
 
@@ -57,10 +56,4 @@ class SharedViewModel @Inject constructor(private val gameUseCase: GameUseCase) 
     }
 
     fun gameDetail(gameId: Int) = gameUseCase.getGameDetail(gameId)
-
-    companion object {
-        const val RELEASED = "released"
-        const val QUERY = "query"
-    }
-
 }

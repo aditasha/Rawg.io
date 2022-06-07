@@ -8,9 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.aditasha.rawgio.core.GlideApp
 import com.aditasha.rawgio.core.R
-import com.aditasha.rawgio.core.databinding.ItemListGamesBinding
-import com.aditasha.rawgio.core.presentation.model.GamePresentation
-import com.aditasha.rawgio.core.utils.DiffUtilCallback
 import com.aditasha.rawgio.databinding.ItemListScreenshotBinding
 import com.aditasha.rawgio.utils.DiffUtilCallbackImage
 
@@ -27,7 +24,8 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val binding = ItemListScreenshotBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemListScreenshotBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 
@@ -36,7 +34,8 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ListViewHolder>() {
         holder.bind(data)
     }
 
-    class ListViewHolder(var binding: ItemListScreenshotBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ListViewHolder(var binding: ItemListScreenshotBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(data: String) {
             val color = ContextCompat.getColor(itemView.context, R.color.white)
 

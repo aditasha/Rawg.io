@@ -26,4 +26,6 @@
     <string name="screenshots">Screenshots</string>
     <string name="https_rawg_io">https://rawg.io/</string>
     <string name="data_source">Data source</string>
+
+    <string name="not_added">(Not added)</string>
 </resources>

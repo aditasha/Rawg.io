@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "favorite")
-data class FavoriteEntity (
+data class FavoriteEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")

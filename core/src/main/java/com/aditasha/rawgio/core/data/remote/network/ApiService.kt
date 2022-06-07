@@ -2,12 +2,11 @@ package com.aditasha.rawgio.core.data.remote.network
 
 import com.aditasha.rawgio.core.BuildConfig
 import com.aditasha.rawgio.core.data.remote.responses.GamesListResponse
+import com.aditasha.rawgio.core.data.remote.responses.GamesResultItem
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import com.aditasha.rawgio.core.data.remote.responses.GamesResultItem
 import java.time.LocalDate
-import javax.inject.Singleton
 
 interface ApiService {
     @GET("games")

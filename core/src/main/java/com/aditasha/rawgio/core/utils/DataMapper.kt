@@ -5,15 +5,10 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.aditasha.rawgio.core.data.local.entity.FavoriteEntity
 import com.aditasha.rawgio.core.data.local.entity.GameEntity
-import com.aditasha.rawgio.core.data.local.entity.RemoteKeysEntity
 import com.aditasha.rawgio.core.data.remote.responses.GamesResultItem
-import com.aditasha.rawgio.core.data.remote.responses.Platforms
 import com.aditasha.rawgio.core.domain.model.Favorite
-import com.aditasha.rawgio.core.domain.model.Remote
 import com.aditasha.rawgio.core.domain.model.Game
 import com.aditasha.rawgio.core.presentation.model.GamePresentation
-import java.time.LocalDate
-import java.time.LocalDateTime
 
 
 object DataMapper {
@@ -31,25 +26,25 @@ object DataMapper {
             var desc = ""
             var web = ""
 
-            if (i.platforms.isNotEmpty()) {
+            if (i.platforms != null && i.platforms.isNotEmpty()) {
                 for (p in i.platforms) {
                     listPlatforms.add(p.platform.name)
                 }
             }
 
-            if (i.genres.isNotEmpty()) {
+            if (i.genres != null && i.genres.isNotEmpty()) {
                 for (g in i.genres) {
                     listGenres.add(g.name)
                 }
             }
 
-            if (i.stores.isNotEmpty()) {
+            if (i.stores != null && i.stores.isNotEmpty()) {
                 for (s in i.stores) {
                     listStores.add(s.store.name)
                 }
             }
 
-            if (i.shortScreenshots != null  && i.shortScreenshots.isNotEmpty()) {
+            if (i.shortScreenshots != null && i.shortScreenshots.isNotEmpty()) {
                 for (s in i.shortScreenshots) {
                     listImage.add(s.image)
                 }
@@ -110,19 +105,19 @@ object DataMapper {
         var desc = ""
         var web = ""
 
-        if (input.platforms.isNotEmpty()) {
+        if (input.platforms != null && input.platforms.isNotEmpty()) {
             for (p in input.platforms) {
                 listPlatforms.add(p.platform.name)
             }
         }
 
-        if (input.genres.isNotEmpty()) {
+        if (input.genres != null && input.genres.isNotEmpty()) {
             for (g in input.genres) {
                 listGenres.add(g.name)
             }
         }
 
-        if (input.stores.isNotEmpty()) {
+        if (input.stores != null && input.stores.isNotEmpty()) {
             for (s in input.stores) {
                 listStores.add(s.store.name)
             }
@@ -197,8 +192,9 @@ object DataMapper {
             Favorite(it.id)
         }
 
-    fun pagingDataEntitiesToDomain(input: PagingData<GameEntity>): PagingData<Game> =
-        input.map {
+    fun pagingDataEntitiesToDomain(input: PagingData<GameEntity>): PagingData<Game> {
+        Log.d("test_dataMap", input.toString())
+        return input.map {
             Game(
                 id = it.id,
                 name = it.name,
@@ -217,6 +213,7 @@ object DataMapper {
                 screenshots = it.screenshots
             )
         }
+    }
 
     fun favoriteDomainToEntity(input: Favorite) = FavoriteEntity(
         id = input.id

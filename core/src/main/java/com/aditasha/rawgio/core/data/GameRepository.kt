@@ -1,7 +1,9 @@
 package com.aditasha.rawgio.core.data
 
-import android.util.Log
-import androidx.paging.*
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.aditasha.rawgio.core.data.local.database.RawgDatabase
 import com.aditasha.rawgio.core.data.remote.GameRemoteMediator
 import com.aditasha.rawgio.core.data.remote.network.ApiService
@@ -13,7 +15,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import androidx.lifecycle.viewModelScope
 
 @ExperimentalPagingApi
 class GameRepository @Inject constructor(
@@ -51,8 +52,7 @@ class GameRepository @Inject constructor(
             //Log.d("test_repo", client.toString())
             val data = DataMapper.mapResponsesToDomain(client)
             emit(Resource.Success(data))
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             emit(Resource.Error(e.message.toString()))
         }
     }

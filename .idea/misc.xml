@@ -3,7 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.2265" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/activity_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/fragment_popularity.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/fragment_released.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/item_list_screenshot.xml" value="0.1265625" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/layout_game_info.xml" value="0.2734375" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/menu/top_app_bar.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/menu/top_app_bar_detail.xml" value="0.1265625" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/core/src/main/res/layout/expandable_layout.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/core/src/main/res/layout/item_list_games.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/core/src/main/res/layout/loading_layout.xml" value="0.27447916666666666" />
         <entry key="..\:/Rawgio/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.2265" />
         <entry key="..\:/Rawgio/app/src/main/res/drawable/bottom_navigation_style.xml" value="0.2265" />
         <entry key="..\:/Rawgio/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2265" />

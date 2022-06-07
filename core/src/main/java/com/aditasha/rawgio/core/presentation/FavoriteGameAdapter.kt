@@ -25,7 +25,8 @@ class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val binding = ItemListGamesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemListGamesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 
@@ -34,7 +35,8 @@ class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHol
         holder.bind(data)
     }
 
-    class ListViewHolder(var binding: ItemListGamesBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ListViewHolder(var binding: ItemListGamesBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(data: GamePresentation) {
             val color = ContextCompat.getColor(itemView.context, R.color.white)
 
@@ -51,7 +53,8 @@ class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHol
                 .into(binding.bgGame)
 
             binding.gameName.text = data.name
-            binding.layout.added.text = itemView.resources.getString(R.string.added_list_games, data.added.toString())
+            binding.layout.added.text =
+                itemView.resources.getString(R.string.added_list_games, data.added.toString())
             binding.layout.released.text = data.release
 
             val genres = data.genre?.joinToString(", ") { it }

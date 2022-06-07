@@ -13,7 +13,6 @@ import com.aditasha.rawgio.core.data.local.entity.RemoteKeysEntity
 import com.aditasha.rawgio.core.data.remote.network.ApiService
 import com.aditasha.rawgio.core.utils.DataMapper
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @ExperimentalPagingApi
 class GameRemoteMediator @Inject constructor(
@@ -53,25 +52,32 @@ class GameRemoteMediator @Inject constructor(
             val responseData =
                 when (query) {
                     "released" -> {
-                        apiService.getListReleased(BuildConfig.API_KEY, page,
+                        apiService.getListReleased(
+                            BuildConfig.API_KEY, page,
                             when (loadType) {
                                 LoadType.REFRESH -> state.config.initialLoadSize
                                 else -> state.config.pageSize
-                            })
+                            }
+                        )
                     }
                     "added" -> {
-                        apiService.getListAdded(BuildConfig.API_KEY, page,
+                        apiService.getListAdded(
+                            BuildConfig.API_KEY, page,
                             when (loadType) {
                                 LoadType.REFRESH -> state.config.initialLoadSize
                                 else -> state.config.pageSize
-                            })
+                            }
+                        )
                     }
                     else -> {
-                        apiService.getListSearch(BuildConfig.API_KEY, page,
+                        Log.d("test_remote", "search")
+                        apiService.getListSearch(
+                            BuildConfig.API_KEY, page,
                             when (loadType) {
                                 LoadType.REFRESH -> state.config.initialLoadSize
                                 else -> state.config.pageSize
-                            }, query)
+                            }, query
+                        )
                     }
                 }
 
@@ -97,6 +103,7 @@ class GameRemoteMediator @Inject constructor(
             }
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (exception: Exception) {
+            Log.d("test_api", exception.toString())
             MediatorResult.Error(exception)
         }
     }

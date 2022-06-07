@@ -54,4 +54,6 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:${rootProject.ext.pagingVersion}"
 
     implementation "com.ms-square:expandableTextView:0.1.4"
+
+    implementation 'me.saket:better-link-movement-method:2.2.0'
 }

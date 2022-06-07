@@ -3,7 +3,7 @@ package com.aditasha.rawgio.core.utils
 import androidx.recyclerview.widget.DiffUtil
 import com.aditasha.rawgio.core.presentation.model.GamePresentation
 
-class DiffUtilCallback (
+class DiffUtilCallback(
     private val oldData: ArrayList<GamePresentation>,
     private val newData: ArrayList<GamePresentation>
 ) : DiffUtil.Callback() {

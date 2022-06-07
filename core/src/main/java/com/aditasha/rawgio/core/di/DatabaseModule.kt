@@ -2,9 +2,6 @@ package com.aditasha.rawgio.core.di
 
 import android.content.Context
 import androidx.room.Room
-import com.aditasha.rawgio.core.data.local.dao.FavoriteDao
-import com.aditasha.rawgio.core.data.local.dao.GameDao
-import com.aditasha.rawgio.core.data.local.dao.RemoteKeysDao
 import com.aditasha.rawgio.core.data.local.database.RawgDatabase
 import dagger.Module
 import dagger.Provides
@@ -20,7 +17,9 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): RawgDatabase =
-        Room.databaseBuilder(context,
+        Room.databaseBuilder(
+            context,
             RawgDatabase::class.java,
-            "Rawg.db").fallbackToDestructiveMigration().build()
+            "Rawg.db"
+        ).fallbackToDestructiveMigration().build()
 }

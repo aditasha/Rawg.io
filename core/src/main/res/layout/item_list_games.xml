@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
+    style="?attr/materialCardViewFilledStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginBottom="24dp"
+    app:cardBackgroundColor="@color/black_200"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    style="?attr/materialCardViewFilledStyle"
-    app:cardBackgroundColor="@color/black_200">
-    
+    app:layout_constraintTop_toTopOf="parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,123 +23,124 @@
             android:layout_width="match_parent"
             android:layout_height="194dp"
             android:scaleType="centerCrop"
-            tools:src="@tools:sample/backgrounds/scenic"/>
+            tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
             android:id="@+id/game_name"
-            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/bg_game"
             android:layout_alignStart="@id/bg_game"
+            android:layout_margin="16dp"
             android:textAppearance="?attr/textAppearanceTitleMedium" />
 
         <CheckBox
             android:id="@+id/expandableCheck"
-            android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/bg_game"
             android:layout_alignEnd="@id/bg_game"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
             android:button="@drawable/expand_button" />
 
         <include
             android:id="@+id/layout"
-            android:layout_below="@id/expandableCheck"
+            layout="@layout/expandable_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/expandable_layout"/>
+            android:layout_below="@id/expandableCheck" />
 
     </RelativeLayout>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical">-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical">-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/bg_game"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="194dp"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            tools:src="@tools:sample/backgrounds/scenic"/>-->
+    <!--        <ImageView-->
+    <!--            android:id="@+id/bg_game"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="194dp"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            tools:src="@tools:sample/backgrounds/scenic"/>-->
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingHorizontal="16dp"-->
-<!--            android:gravity="center"-->
-<!--            android:orientation="horizontal">-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingHorizontal="16dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:orientation="horizontal">-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/game_name"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textAppearance="?attr/textAppearanceTitleMedium"-->
-<!--                android:layout_weight="3"/>-->
+    <!--            <TextView-->
+    <!--                android:id="@+id/game_name"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:textAppearance="?attr/textAppearanceTitleMedium"-->
+    <!--                android:layout_weight="3"/>-->
 
-<!--            <CheckBox-->
-<!--                android:id="@+id/expandableCheck"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:button="@drawable/expand_button"/>-->
+    <!--            <CheckBox-->
+    <!--                android:id="@+id/expandableCheck"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:button="@drawable/expand_button"/>-->
 
-<!--&lt;!&ndash;            <com.google.android.material.floatingactionbutton.FloatingActionButton&ndash;&gt;-->
-<!--&lt;!&ndash;                android:id="@+id/fab_cam"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:padding="4dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:foregroundGravity="bottom"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:backgroundTint="@color/black_200"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:fabSize="auto"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_margin="8dp"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:srcCompat="@drawable/icon_favorites_border"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:tint="@color/white" />&ndash;&gt;-->
+    <!--&lt;!&ndash;            <com.google.android.material.floatingactionbutton.FloatingActionButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:id="@+id/fab_cam"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:padding="4dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:foregroundGravity="bottom"&ndash;&gt;-->
+    <!--&lt;!&ndash;                app:backgroundTint="@color/black_200"&ndash;&gt;-->
+    <!--&lt;!&ndash;                app:fabSize="auto"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_margin="8dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                app:srcCompat="@drawable/icon_favorites_border"&ndash;&gt;-->
+    <!--&lt;!&ndash;                app:tint="@color/white" />&ndash;&gt;-->
 
-<!--        </LinearLayout>-->
+    <!--        </LinearLayout>-->
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/expandableLayout"-->
-<!--            android:visibility="gone"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingTop="8dp"-->
-<!--            android:paddingHorizontal="16dp"-->
-<!--            android:paddingBottom="16dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:gravity="top">-->
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/expandableLayout"-->
+    <!--            android:visibility="gone"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingTop="8dp"-->
+    <!--            android:paddingHorizontal="16dp"-->
+    <!--            android:paddingBottom="16dp"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:gravity="top">-->
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="0dp"-->
-<!--                android:padding="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_weight="2">-->
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:padding="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:orientation="vertical"-->
+    <!--                android:layout_weight="2">-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/added"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textAppearance="?attr/textAppearanceBodyMedium"/>-->
+    <!--                <TextView-->
+    <!--                    android:id="@+id/added"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textAppearance="?attr/textAppearanceBodyMedium"/>-->
 
-<!--                <TextView-->
-<!--                    android:paddingTop="16dp"-->
-<!--                    android:id="@+id/released"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textAppearance="?attr/textAppearanceBodyMedium" />-->
+    <!--                <TextView-->
+    <!--                    android:paddingTop="16dp"-->
+    <!--                    android:id="@+id/released"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textAppearance="?attr/textAppearanceBodyMedium" />-->
 
-<!--            </LinearLayout>-->
+    <!--            </LinearLayout>-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/genres"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textAppearance="?attr/textAppearanceBodyMedium"-->
-<!--                android:layout_weight="2"/>-->
+    <!--            <TextView-->
+    <!--                android:id="@+id/genres"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:textAppearance="?attr/textAppearanceBodyMedium"-->
+    <!--                android:layout_weight="2"/>-->
 
-<!--        </LinearLayout>-->
+    <!--        </LinearLayout>-->
 
-<!--    </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
 </com.google.android.material.card.MaterialCardView>

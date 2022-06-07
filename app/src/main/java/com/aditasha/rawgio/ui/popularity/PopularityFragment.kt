@@ -1,25 +1,24 @@
 package com.aditasha.rawgio.ui.popularity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.aditasha.rawgio.MainActivity.Companion.ADDED
+import com.aditasha.rawgio.MainActivity.Companion.DEFAULT
+import com.aditasha.rawgio.MainActivity.Companion.RELEASED
+import com.aditasha.rawgio.MainActivity.Companion.SEARCH
 import com.aditasha.rawgio.R
 import com.aditasha.rawgio.core.data.Resource
 import com.aditasha.rawgio.core.presentation.GameListAdapter
@@ -28,12 +27,9 @@ import com.aditasha.rawgio.core.presentation.model.GamePresentation
 import com.aditasha.rawgio.core.utils.DataMapper
 import com.aditasha.rawgio.databinding.FragmentPopularityBinding
 import com.aditasha.rawgio.ui.SharedViewModel
-import com.aditasha.rawgio.ui.released.ReleasedFragmentDirections
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
-import kotlinx.coroutines.launch
 
 class PopularityFragment : Fragment() {
 
@@ -42,8 +38,6 @@ class PopularityFragment : Fragment() {
 
     private var _binding: FragmentPopularityBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -55,6 +49,15 @@ class PopularityFragment : Fragment() {
         _binding = FragmentPopularityBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        setupRecycler()
+        setupAdapter()
+        fetchData()
+        clickListener()
+
+        return root
+    }
+
+    private fun setupRecycler() {
         binding.apply {
             gameRecycler.apply {
                 setHasFixedSize(true)
@@ -67,27 +70,7 @@ class PopularityFragment : Fragment() {
             }
         }
 
-        gameAdapter.stateRestorationPolicy =
-            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-
         binding.swipeRefresh.setOnRefreshListener { gameAdapter.refresh() }
-
-        if (sharedViewModel.fromFragment == "released") {
-            viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                gameAdapter.submitData(PagingData.empty())
-                sharedViewModel.addQuery("added")
-                gameAdapter.refresh()
-            }
-        }
-
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                sharedViewModel.gameList
-                    .collectLatest {
-                        gameAdapter.submitData(viewLifecycleOwner.lifecycle, it)
-                    }
-            }
-        }
 
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             gameAdapter.loadStateFlow
@@ -103,8 +86,43 @@ class PopularityFragment : Fragment() {
                     }
                 }
         }
+    }
 
-        gameAdapter.setOnItemClickCallback(object: GameListAdapter.OnItemClickCallback {
+    private fun setupAdapter() {
+        gameAdapter.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                sharedViewModel.requestedList.collectLatest {
+                    if (it != ADDED) {
+                        if (it == RELEASED || it == DEFAULT) {
+                            sharedViewModel.addQuery(ADDED)
+                            gameAdapter.refresh()
+                        } else {
+                            sharedViewModel.addQuery(SEARCH, ADDED)
+                            gameAdapter.refresh()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun fetchData() {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                sharedViewModel.gameList
+                    .collectLatest {
+                        gameAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+                    }
+            }
+        }
+    }
+
+    private fun clickListener() {
+        gameAdapter.setOnItemClickCallback(object : GameListAdapter.OnItemClickCallback {
+
             override fun onItemClicked(game: GamePresentation) {
                 viewLifecycleOwner.lifecycleScope.launchWhenCreated {
                     sharedViewModel.gameDetail(game.id)
@@ -114,18 +132,30 @@ class PopularityFragment : Fragment() {
                                     showLoading(true)
                                     showFailed(false, "")
                                 }
+
                                 is Resource.Error -> {
                                     showLoading(false)
                                     showFailed(true, it.message.toString())
                                 }
+
                                 else -> {
                                     showLoading(false)
                                     showFailed(false, "")
+
                                     if (it.data != null) {
-                                        val gameDetail = DataMapper.mapDomainToPresentation(it.data!!)
+                                        val gameDetail =
+                                            DataMapper.mapDomainToPresentation(it.data!!)
                                         gameDetail.screenshots = game.screenshots
-                                        Toast.makeText(requireActivity(), "succes getting data", Toast.LENGTH_LONG).show()
-                                        val action = PopularityFragmentDirections.actionNavigationPopularityToDetailActivity(gameDetail)
+
+                                        Toast.makeText(
+                                            requireActivity(),
+                                            "succes getting data",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        val action =
+                                            PopularityFragmentDirections.actionNavigationPopularityToDetailActivity(
+                                                gameDetail
+                                            )
                                         findNavController().navigate(action)
                                     }
                                 }
@@ -134,8 +164,6 @@ class PopularityFragment : Fragment() {
                 }
             }
         })
-
-        return root
     }
 
     private fun showFailed(isFailed: Boolean, e: String) {

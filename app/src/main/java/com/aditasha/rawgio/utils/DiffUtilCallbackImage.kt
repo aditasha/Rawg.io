@@ -1,9 +1,8 @@
 package com.aditasha.rawgio.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.aditasha.rawgio.core.presentation.model.GamePresentation
 
-class DiffUtilCallbackImage (
+class DiffUtilCallbackImage(
     private val oldData: MutableList<String>,
     private val newData: MutableList<String>
 ) : DiffUtil.Callback() {
