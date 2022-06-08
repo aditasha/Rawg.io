@@ -67,7 +67,7 @@ Provided from
 <!-- ROADMAP -->
 ## TO-DO
 
-- [ ] Complete the search feature
+- [X] Complete the search feature
 - [ ] Complete favorite games feature using Dynamic Feature Module
 
 <!-- CONTACT -->
