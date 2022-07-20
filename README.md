@@ -36,12 +36,24 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<!-- 
+
 <div align="center">
   <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
-      <img src="resources/DicodingStory.gif" alt="Demo" width=50% height=50%>
+      <img src="screenshots/rawgio2.png" alt="Screenshots" width=25% height=25%>
   </a>
-</div> -->
+    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+      <img src="screenshots/rawgio4.png" alt="Screenshots" width=25% height=25%>
+  </a>
+    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+      <img src="screenshots/rawgio3.png" alt="Screenshots" width=25% height=25%>
+  </a>
+    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+      <img src="screenshots/rawgio5.png" alt="Screenshots" width=25% height=25%>
+  </a>
+    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+      <img src="screenshots/rawgio1.png" alt="Screenshots" width=25% height=25%>
+  </a>
+</div>
 <br />
 
 This project was created using Kotlin, utilizing RecylerView, Paging 3 and Retrofit to show and collect data, Modularization to separate core and UI functions, Clean Architecture with Domain Data Presentation layer, Dagger Hilt dependency injection, Reactive Programming from Data Domain to Presentation layer using Flow and Room database for Single Source of Truth
