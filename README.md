@@ -68,7 +68,7 @@ Provided from
 ## TO-DO
 
 - [X] Complete the search feature
-- [ ] Complete favorite games feature using Dynamic Feature Module
+- [X] Complete favorite games feature using Dynamic Feature Module
 
 <!-- CONTACT -->
 ## Contact
