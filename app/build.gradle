@@ -39,6 +39,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    dynamicFeatures = [':favorites']
 }
 
 dependencies {
@@ -56,4 +57,5 @@ dependencies {
     implementation "com.ms-square:expandableTextView:0.1.4"
 
     implementation 'me.saket:better-link-movement-method:2.2.0'
+    implementation "com.google.android.play:core:${rootProject.ext.gplayVersion}"
 }

@@ -45,11 +45,17 @@ class GameRepository @Inject constructor(
             DataMapper.favoriteEntitiesToDomain(it)
         }
 
+    override fun getFavoriteGameById(gameId: Int): Flow<Favorite?> {
+        return rawgDatabase.favoriteDao.getFavoriteById(gameId).map {
+            if (it == null) null
+            else Favorite(it.id, it.name, it.picture)
+        }
+    }
+
     override fun getGameDetail(gameId: Int): Flow<Resource<Game>> = flow {
         emit(Resource.Loading())
         try {
             val client = apiService.getDetail(gameId)
-            //Log.d("test_repo", client.toString())
             val data = DataMapper.mapResponsesToDomain(client)
             emit(Resource.Success(data))
         } catch (e: Exception) {

@@ -189,11 +189,10 @@ object DataMapper {
 
     fun favoriteEntitiesToDomain(input: List<FavoriteEntity>): List<Favorite> =
         input.map {
-            Favorite(it.id)
+            Favorite(it.id, it.name, it.picture, it.screenshots)
         }
 
     fun pagingDataEntitiesToDomain(input: PagingData<GameEntity>): PagingData<Game> {
-        Log.d("test_dataMap", input.toString())
         return input.map {
             Game(
                 id = it.id,
@@ -216,7 +215,10 @@ object DataMapper {
     }
 
     fun favoriteDomainToEntity(input: Favorite) = FavoriteEntity(
-        id = input.id
+        id = input.id,
+        name = input.name,
+        picture = input.picture,
+        screenshots = input.screenshots
     )
 
     fun pagingDataDomainToPresentation(input: PagingData<Game>): PagingData<GamePresentation> =

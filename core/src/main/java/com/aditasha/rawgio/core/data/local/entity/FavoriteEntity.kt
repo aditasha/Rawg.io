@@ -10,5 +10,16 @@ data class FavoriteEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")
-    var id: Int
+    var id: Int,
+
+    @NonNull
+    @ColumnInfo(name = "name")
+    var name: String,
+
+    @NonNull
+    @ColumnInfo(name = "background")
+    var picture: String,
+
+    @ColumnInfo(name = "screenshots")
+    var screenshots: MutableList<String>? = null
 )

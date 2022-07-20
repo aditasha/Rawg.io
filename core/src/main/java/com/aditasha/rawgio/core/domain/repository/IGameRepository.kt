@@ -12,6 +12,8 @@ interface IGameRepository {
 
     fun getFavoriteGame(): Flow<List<Favorite>>
 
+    fun getFavoriteGameById(gameId: Int): Flow<Favorite?>
+
     fun getGameDetail(gameId: Int): Flow<Resource<Game>>
 
     suspend fun insertFavoriteGame(favorite: Favorite)

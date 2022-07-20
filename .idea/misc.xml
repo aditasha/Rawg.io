@@ -4,8 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.2265" />
-        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/activity_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/bottom_navigation_style.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/icon_added.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/icon_popular.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/icon_rating.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/drawable/icon_released.xml" value="0.2265" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/activity_detail.xml" value="0.1" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/activity_favorite.xml" value="0.27025641025641023" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/fragment_favorite.xml" value="0.27025641025641023" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/fragment_home.xml" value="0.27025641025641023" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/fragment_popularity.xml" value="0.27447916666666666" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/fragment_released.xml" value="0.27447916666666666" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/layout/item_list_screenshot.xml" value="0.1265625" />
@@ -14,8 +26,13 @@
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/menu/top_app_bar.xml" value="0.27447916666666666" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/app/src/main/res/menu/top_app_bar_detail.xml" value="0.1265625" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/core/src/main/res/layout/expandable_layout.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/core/src/main/res/layout/item_list_favorite.xml" value="0.27025641025641023" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/core/src/main/res/layout/item_list_games.xml" value="0.27447916666666666" />
         <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/core/src/main/res/layout/loading_layout.xml" value="0.27447916666666666" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/favorites/src/main/res/layout/activity_favorite.xml" value="0.27025641025641023" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/favorites/src/main/res/layout/fragment_favorite.xml" value="0.27025641025641023" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/favorites2/src/main/res/layout/activity_favorite.xml" value="0.27025641025641023" />
+        <entry key="..\:/Bangkit/AndroidStudioProjects/AndroidExpert/Rawgio/favorites2/src/main/res/layout/fragment_favorite.xml" value="0.27025641025641023" />
         <entry key="..\:/Rawgio/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.2265" />
         <entry key="..\:/Rawgio/app/src/main/res/drawable/bottom_navigation_style.xml" value="0.2265" />
         <entry key="..\:/Rawgio/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2265" />

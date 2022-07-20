@@ -8,14 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.aditasha.rawgio.core.GlideApp
 import com.aditasha.rawgio.core.R
-import com.aditasha.rawgio.core.databinding.ItemListGamesBinding
-import com.aditasha.rawgio.core.presentation.model.GamePresentation
+import com.aditasha.rawgio.core.databinding.ItemListFavoriteBinding
+import com.aditasha.rawgio.core.presentation.model.FavoritePresentation
 import com.aditasha.rawgio.core.utils.DiffUtilCallback
 
 class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHolder>() {
-    private var listGame: ArrayList<GamePresentation> = ArrayList()
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    private var listGame: ArrayList<FavoritePresentation> = ArrayList()
 
-    fun addData(data: ArrayList<GamePresentation>) {
+    fun addData(data: ArrayList<FavoritePresentation>) {
         val diffCallback = DiffUtilCallback(listGame, data)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
 
@@ -26,7 +27,7 @@ class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHol
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val binding =
-            ItemListGamesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemListFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 
@@ -35,9 +36,9 @@ class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHol
         holder.bind(data)
     }
 
-    class ListViewHolder(var binding: ItemListGamesBinding) :
+    inner class ListViewHolder(var binding: ItemListFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: GamePresentation) {
+        fun bind(data: FavoritePresentation) {
             val color = ContextCompat.getColor(itemView.context, R.color.white)
 
             val circularProgressDrawable = CircularProgressDrawable(itemView.context)
@@ -48,18 +49,24 @@ class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHol
 
             GlideApp
                 .with(itemView.context)
-                .load(data.background)
+                .load(data.picture)
                 .placeholder(circularProgressDrawable)
                 .into(binding.bgGame)
 
             binding.gameName.text = data.name
-            binding.layout.added.text =
-                itemView.resources.getString(R.string.added_list_games, data.added.toString())
-            binding.layout.released.text = data.release
 
-            val genres = data.genre?.joinToString(", ") { it }
-            binding.layout.genres.text = genres
+            itemView.setOnClickListener {
+                onItemClickCallback.onItemClicked(data)
+            }
         }
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(fav: FavoritePresentation)
     }
 
     override fun getItemCount(): Int = listGame.size

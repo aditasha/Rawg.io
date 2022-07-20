@@ -1,6 +1,7 @@
 package com.aditasha.rawgio
 
 import android.app.SearchManager
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +18,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.aditasha.rawgio.databinding.ActivityMainBinding
 import com.aditasha.rawgio.ui.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
+import com.google.android.play.core.splitinstall.SplitInstallRequest
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.topAppBar))
+        setSupportActionBar(binding.topAppBar)
 
         val navView: BottomNavigationView = binding.navView
 
@@ -79,10 +82,42 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite -> {
-                // TODO(Favorite Fragment)
+                installFavoritesModule()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun installFavoritesModule() {
+        val splitInstallManager = SplitInstallManagerFactory.create(this)
+        val moduleName = getString(R.string.module_name)
+        if (splitInstallManager.installedModules.contains(moduleName)) {
+            moveToFavoritesActivity()
+        } else {
+            val request = SplitInstallRequest.newBuilder()
+                .addModule(moduleName)
+                .build()
+
+            splitInstallManager.startInstall(request)
+                .addOnSuccessListener {
+                    Toast.makeText(this, getString(R.string.success_module), Toast.LENGTH_SHORT)
+                        .show()
+                    moveToFavoritesActivity()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, getString(R.string.error_module), Toast.LENGTH_SHORT)
+                        .show()
+                }
+        }
+    }
+
+    private fun moveToFavoritesActivity() {
+        startActivity(
+            Intent(
+                this@MainActivity,
+                Class.forName(getString(R.string.module_class_name))
+            )
+        )
     }
 
     companion object {

@@ -7,43 +7,6 @@
     android:background="@color/black_500"
     android:fitsSystemWindows="true">
 
-    <!--    <com.google.android.material.appbar.AppBarLayout-->
-    <!--        android:id="@+id/topAppBar"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:fitsSystemWindows="true">-->
-
-    <!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
-    <!--            style="?attr/collapsingToolbarLayoutLargeStyle"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"-->
-    <!--            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"-->
-    <!--            app:contentScrim="?attr/colorPrimary">-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/bg_game"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:scaleType="centerCrop"-->
-    <!--                android:fitsSystemWindows="true" />-->
-
-    <!--            <com.google.android.material.appbar.MaterialToolbar-->
-    <!--                android:id="@+id/materialToolbar"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:elevation="0dp"-->
-    <!--                app:menu="@menu/top_app_bar"-->
-    <!--                style="@style/AppBar"-->
-    <!--                app:titleCentered="true"-->
-    <!--                android:background="@android:color/transparent"-->
-    <!--                app:layout_collapseMode="pin"/>-->
-
-    <!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
-
-    <!--    </com.google.android.material.appbar.AppBarLayout>-->
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         style="@style/AppBar"

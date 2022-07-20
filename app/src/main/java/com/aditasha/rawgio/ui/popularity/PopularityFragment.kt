@@ -25,7 +25,7 @@ import com.aditasha.rawgio.core.presentation.GameListAdapter
 import com.aditasha.rawgio.core.presentation.LoadingStateAdapter
 import com.aditasha.rawgio.core.presentation.model.GamePresentation
 import com.aditasha.rawgio.core.utils.DataMapper
-import com.aditasha.rawgio.databinding.FragmentPopularityBinding
+import com.aditasha.rawgio.databinding.FragmentHomeBinding
 import com.aditasha.rawgio.ui.SharedViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.collectLatest
@@ -36,7 +36,7 @@ class PopularityFragment : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private val gameAdapter = GameListAdapter()
 
-    private var _binding: FragmentPopularityBinding? = null
+    private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
 
@@ -46,7 +46,7 @@ class PopularityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentPopularityBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         setupRecycler()
@@ -150,7 +150,7 @@ class PopularityFragment : Fragment() {
                                         Toast.makeText(
                                             requireActivity(),
                                             "succes getting data",
-                                            Toast.LENGTH_LONG
+                                            Toast.LENGTH_SHORT
                                         ).show()
                                         val action =
                                             PopularityFragmentDirections.actionNavigationPopularityToDetailActivity(

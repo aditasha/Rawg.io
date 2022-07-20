@@ -25,11 +25,12 @@ import com.aditasha.rawgio.core.presentation.GameListAdapter
 import com.aditasha.rawgio.core.presentation.LoadingStateAdapter
 import com.aditasha.rawgio.core.presentation.model.GamePresentation
 import com.aditasha.rawgio.core.utils.DataMapper
-import com.aditasha.rawgio.databinding.FragmentReleasedBinding
+import com.aditasha.rawgio.databinding.FragmentHomeBinding
 import com.aditasha.rawgio.ui.SharedViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChangedBy
 
 @AndroidEntryPoint
 class ReleasedFragment : Fragment() {
@@ -37,7 +38,7 @@ class ReleasedFragment : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private val gameAdapter = GameListAdapter()
 
-    private var _binding: FragmentReleasedBinding? = null
+    private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
 
@@ -47,7 +48,7 @@ class ReleasedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentReleasedBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         setupRecycler()
@@ -152,7 +153,7 @@ class ReleasedFragment : Fragment() {
                                         Toast.makeText(
                                             requireActivity(),
                                             "succes getting data",
-                                            Toast.LENGTH_LONG
+                                            Toast.LENGTH_SHORT
                                         ).show()
                                         val action =
                                             ReleasedFragmentDirections.actionNavigationReleasedToDetailActivity(
@@ -178,13 +179,11 @@ class ReleasedFragment : Fragment() {
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.apply {
-                searchTextLayout.isVisible = false
                 gameRecycler.isVisible = false
                 loading.isVisible = true
             }
         } else {
             binding.apply {
-                searchTextLayout.isVisible = true
                 gameRecycler.isVisible = true
                 loading.isVisible = false
             }

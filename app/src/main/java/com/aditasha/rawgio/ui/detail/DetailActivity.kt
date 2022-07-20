@@ -5,10 +5,12 @@ import android.content.ClipboardManager
 import android.os.Bundle
 import android.text.util.Linkify
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -17,16 +19,20 @@ import com.aditasha.rawgio.core.GlideApp
 import com.aditasha.rawgio.core.presentation.model.GamePresentation
 import com.aditasha.rawgio.databinding.ActivityDetailBinding
 import com.bumptech.glide.request.RequestOptions
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import me.saket.bettermovementmethod.BetterLinkMovementMethod
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private val args: DetailActivityArgs by navArgs()
     private lateinit var game: GamePresentation
     private val imageAdapter = ImageAdapter()
+    private val detailViewModel: DetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +40,18 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.materialToolbar))
+        setSupportActionBar(binding.materialToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.materialToolbar.setNavigationOnClickListener {
+            finish()
+        }
 
         game = args.game
         binding.toolbarLayout.title = game.name
 
         fetchDetail()
         linkTextView()
+        fabClickListener()
     }
 
     private fun fetchDetail() {
@@ -126,5 +137,34 @@ class DetailActivity : AppCompatActivity() {
         val date = LocalDate.parse(text)
         val formatter = DateTimeFormatter.ofPattern("d MMM yyyy")
         return date.format(formatter)
+    }
+
+    private fun fabClickListener() {
+        lifecycleScope.launchWhenCreated {
+            detailViewModel.getFavorite(game.id).collectLatest { isFavorite ->
+                if (!isFavorite) {
+                    binding.fab.icon =
+                        getDrawable(com.aditasha.rawgio.core.R.drawable.icon_favorites_border)
+                    binding.fab.setOnClickListener {
+                        detailViewModel.addFavorite(
+                            game.id,
+                            game.name,
+                            game.background,
+                            game.screenshots
+                        )
+                        val message = getString(R.string.add_favorite, game.name)
+                        Toast.makeText(this@DetailActivity, message, Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    binding.fab.icon =
+                        getDrawable(com.aditasha.rawgio.core.R.drawable.icon_favorites)
+                    binding.fab.setOnClickListener {
+                        detailViewModel.deleteFavorite(game.id)
+                        val message = getString(R.string.remove_favorite, game.name)
+                        Toast.makeText(this@DetailActivity, message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,11 +1,11 @@
 package com.aditasha.rawgio.core.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.aditasha.rawgio.core.presentation.model.GamePresentation
+import com.aditasha.rawgio.core.presentation.model.FavoritePresentation
 
 class DiffUtilCallback(
-    private val oldData: ArrayList<GamePresentation>,
-    private val newData: ArrayList<GamePresentation>
+    private val oldData: ArrayList<FavoritePresentation>,
+    private val newData: ArrayList<FavoritePresentation>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {

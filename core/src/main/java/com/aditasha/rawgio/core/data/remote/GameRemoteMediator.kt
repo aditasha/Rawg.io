@@ -70,7 +70,6 @@ class GameRemoteMediator @Inject constructor(
                         )
                     }
                     else -> {
-                        Log.d("test_remote", "search")
                         apiService.getListSearch(
                             BuildConfig.API_KEY, page,
                             when (loadType) {
@@ -103,7 +102,6 @@ class GameRemoteMediator @Inject constructor(
             }
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (exception: Exception) {
-            Log.d("test_api", exception.toString())
             MediatorResult.Error(exception)
         }
     }

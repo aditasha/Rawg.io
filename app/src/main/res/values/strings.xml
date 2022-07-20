@@ -19,7 +19,7 @@
     <string name="publishers">Publishers</string>
     <string name="released">Released</string>
     <string name="rating">Rating</string>
-    <string name="rating_count">Count: %1s rating</string>
+    <string name="rating_count">%1s rating</string>
     <string name="added">Added</string>
     <string name="about">About</string>
     <string name="website">Website</string>
@@ -28,4 +28,12 @@
     <string name="data_source">Data source</string>
 
     <string name="not_added">(Not added)</string>
+
+    <string name="add_favorite">%1s added to favorites</string>
+    <string name="remove_favorite">%1s removed from favorites</string>
+
+    <string name="module_name">favorites</string>
+    <string name="success_module">Success installing module</string>
+    <string name="error_module">Error installing module</string>
+    <string name="module_class_name">com.aditasha.rawgio.favorites.FavoriteActivity</string>
 </resources>

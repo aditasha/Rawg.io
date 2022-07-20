@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="close_dialog">Close</string>
+    <string name="error">Oops,\n%1s</string>
+
+    <string name="empty">Games that you add to favorites will be shown here</string>
+</resources>

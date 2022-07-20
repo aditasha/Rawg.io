@@ -9,7 +9,7 @@
         android:id="@+id/navigation_released"
         android:name="com.aditasha.rawgio.ui.released.ReleasedFragment"
         android:label="@string/upper_name"
-        tools:layout="@layout/fragment_popularity">
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_released_to_detailActivity"
             app:destination="@id/detailActivity" />
@@ -19,7 +19,7 @@
         android:id="@+id/navigation_popularity"
         android:name="com.aditasha.rawgio.ui.popularity.PopularityFragment"
         android:label="@string/upper_name"
-        tools:layout="@layout/fragment_released">
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_popularity_to_detailActivity"
             app:destination="@id/detailActivity" />
@@ -27,7 +27,8 @@
     <activity
         android:id="@+id/detailActivity"
         android:name="com.aditasha.rawgio.ui.detail.DetailActivity"
-        android:label="DetailActivity">
+        android:label="DetailActivity"
+        tools:layout="@layout/activity_detail">
         <argument
             android:name="game"
             app:argType="com.aditasha.rawgio.core.presentation.model.GamePresentation" />
