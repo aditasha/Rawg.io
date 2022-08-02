@@ -16,7 +16,6 @@ jobs:
   unit-test:
     executor: 
       name: android/android-machine
-      resource-class: xlarge
       tag: 2021.10.1
     steps:
       - checkout
@@ -62,6 +61,14 @@ jobs:
       
     steps:
       - checkout
+      - run:
+          name: Chmod permissions
+          command: sudo chmod +x ./gradlew
+          
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+          
       - android/start-emulator-and-run-tests:
           test-command: ./gradlew connectedDebugAndroidTest
           system-image: << parameters.system-image >>
@@ -79,10 +86,17 @@ jobs:
   release-build:
     executor:
       name: android/android-machine
-      resource-class: xlarge
       tag: 2021.10.1
     steps:
       - checkout
+      - run:
+          name: Chmod permissions
+          command: sudo chmod +x ./gradlew
+          
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+          
       - android/restore-gradle-cache
       - android/restore-build-cache
       - run:
@@ -100,5 +114,22 @@ workflows:
     jobs:
       - vulnachecka/scan
       - unit-test
-      - android-test
-      - release-build
+      - android/run-ui-tests
+      - android-test:
+          matrix:
+            alias: android-test-all
+            parameters:
+              system-image:
+                - system-images;android-30;google_apis;x86
+                - system-images;android-29;google_apis;x86
+                - system-images;android-28;google_apis;x86
+                - system-images;android-27;google_apis;x86
+                - system-images;android-26;google_apis;x86
+                - system-images;android-25;google_apis;x86
+                - system-images;android-24;google_apis;x86
+                - system-images;android-23;google_apis;x86
+          name: android-test-<<matrix.system-image>>
+      - release-build:
+          requires:
+            - unit-test
+            - android-test-all
