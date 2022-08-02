@@ -56,7 +56,6 @@ jobs:
         
     executor: 
       name: android/android-machine
-      resource-class: xlarge
       tag: 2021.10.1
       
     steps:
@@ -114,7 +113,6 @@ workflows:
     jobs:
       - vulnachecka/scan
       - unit-test
-      - android/run-ui-tests
       - android-test:
           matrix:
             alias: android-test-all
