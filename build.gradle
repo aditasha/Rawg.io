@@ -2,7 +2,7 @@
 buildscript {
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.42"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1"
     }
 }
 
@@ -26,7 +26,7 @@ ext {
     recyclerviewVersion = '1.2.1'
     materialVersion = '1.6.1'
     glideVersion = '4.13.2'
-    navigationVersion = '2.4.2'
+    navigationVersion = '2.5.1'
     swipeRefreshVersion = '1.1.0'
 
     roomVersion = '2.4.2'
@@ -35,9 +35,9 @@ ext {
     loggingInterceptorVersion = '5.0.0-alpha.7'
 
     kotlinCoroutinesVersion = '1.6.1'
-    lifecycleVersion = '2.4.1'
-    activityKtxVersion = "1.4.0"
-    fragmentKtxVersion = '1.4.1'
+    lifecycleVersion = '2.5.0'
+    activityKtxVersion = "1.5.1"
+    fragmentKtxVersion = '1.5.1'
     pagingVersion = '3.1.1'
 
     hiltVersion = '2.42'
@@ -47,6 +47,16 @@ ext {
 
     desugarVersion = '1.1.5'
     gplayVersion = '1.10.3'
+
+    lottie_version = '5.2.0'
+
+    shimmer_version = '0.5.0'
+
+    leakCanary_version = '2.9.1'
+
+    sqlCipher_version = '4.5.1'
+
+    sqliteKtx_version = '2.2.0'
 }
 
 task clean(type: Delete) {

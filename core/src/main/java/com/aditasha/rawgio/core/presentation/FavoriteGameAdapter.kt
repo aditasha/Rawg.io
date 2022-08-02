@@ -36,7 +36,7 @@ class FavoriteGameAdapter : RecyclerView.Adapter<FavoriteGameAdapter.ListViewHol
         holder.bind(data)
     }
 
-    inner class ListViewHolder(var binding: ItemListFavoriteBinding) :
+    inner class ListViewHolder(private var binding: ItemListFavoriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: FavoritePresentation) {
             val color = ContextCompat.getColor(itemView.context, R.color.white)

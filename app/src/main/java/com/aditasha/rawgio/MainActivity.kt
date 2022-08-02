@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
                     sharedViewModel.searchQuery = query
                     sharedViewModel.requestedList.emit(SEARCH)
                 }
-                Toast.makeText(this@MainActivity, query, Toast.LENGTH_SHORT).show()
                 searchView.clearFocus()
                 return true
             }
@@ -88,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun installFavoritesModule() {
+    private fun installFavoritesModule() {
         val splitInstallManager = SplitInstallManagerFactory.create(this)
         val moduleName = getString(R.string.module_name)
         if (splitInstallManager.installedModules.contains(moduleName)) {

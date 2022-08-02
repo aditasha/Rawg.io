@@ -1,6 +1,5 @@
 package com.aditasha.rawgio.core.utils
 
-import android.util.Log
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.aditasha.rawgio.core.data.local.entity.FavoriteEntity

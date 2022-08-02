@@ -34,7 +34,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ListViewHolder>() {
         holder.bind(data)
     }
 
-    class ListViewHolder(var binding: ItemListScreenshotBinding) :
+    class ListViewHolder(private var binding: ItemListScreenshotBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: String) {
             val color = ContextCompat.getColor(itemView.context, R.color.white)

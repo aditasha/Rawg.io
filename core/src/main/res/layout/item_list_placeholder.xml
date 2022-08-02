@@ -2,7 +2,7 @@
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#7F000000"
     android:id="@+id/card"
     style="?attr/materialCardViewFilledStyle"
     android:layout_width="match_parent"
@@ -23,27 +23,30 @@
             android:layout_width="match_parent"
             android:layout_height="194dp"
             android:scaleType="centerCrop"
-            tools:src="@tools:sample/backgrounds/scenic"
+            android:background="#DDDDDD"
             android:contentDescription="@string/background_img"/>
 
         <TextView
             android:id="@+id/game_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="24dp"
             android:layout_below="@id/bg_game"
             android:layout_alignStart="@id/bg_game"
             android:layout_margin="16dp"
+            android:background="#DDDDDD"
             android:textAppearance="?attr/textAppearanceTitleMedium" />
 
         <CheckBox
             android:id="@+id/expandableCheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_below="@id/bg_game"
             android:layout_alignEnd="@id/bg_game"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:button="@drawable/expand_button" />
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="#DDDDDD"
+            android:buttonTint="#DDDDDD" />
 
         <include
             android:id="@+id/layout"

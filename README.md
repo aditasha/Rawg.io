@@ -38,19 +38,19 @@
 ## About The Project
 
 <div align="center">
-  <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+  <a href="https://github.com/aditasha/rawg.io-app">
       <img src="screenshots/rawgio2.png" alt="Screenshots" width=25% height=25%>
   </a>
-    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+    <a href="https://github.com/aditasha/rawg.io-app">
       <img src="screenshots/rawgio4.png" alt="Screenshots" width=25% height=25%>
   </a>
-    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+    <a href="https://github.com/aditasha/rawg.io-app">
       <img src="screenshots/rawgio3.png" alt="Screenshots" width=25% height=25%>
   </a>
-    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+    <a href="https://github.com/aditasha/rawg.io-app">
       <img src="screenshots/rawgio5.png" alt="Screenshots" width=25% height=25%>
   </a>
-    <a href="https://github.com/aditasha/rawg.io-app" margin=250px>
+    <a href="https://github.com/aditasha/rawg.io-app">
       <img src="screenshots/rawgio1.png" alt="Screenshots" width=25% height=25%>
   </a>
 </div>

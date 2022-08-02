@@ -7,6 +7,7 @@ import android.text.util.Linkify
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.text.HtmlCompat
@@ -46,7 +47,12 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
-        game = args.game
+        if (args.game != null) {
+            game = args.game!!
+        } else {
+            val intent = intent.getParcelableExtra<GamePresentation>(GAME_DETAIL)
+            intent?.let { game = it }
+        }
         binding.toolbarLayout.title = game.name
 
         fetchDetail()
@@ -144,7 +150,7 @@ class DetailActivity : AppCompatActivity() {
             detailViewModel.getFavorite(game.id).collectLatest { isFavorite ->
                 if (!isFavorite) {
                     binding.fab.icon =
-                        getDrawable(com.aditasha.rawgio.core.R.drawable.icon_favorites_border)
+                        AppCompatResources.getDrawable(this@DetailActivity, com.aditasha.rawgio.core.R.drawable.icon_favorites_border)
                     binding.fab.setOnClickListener {
                         detailViewModel.addFavorite(
                             game.id,
@@ -157,7 +163,7 @@ class DetailActivity : AppCompatActivity() {
                     }
                 } else {
                     binding.fab.icon =
-                        getDrawable(com.aditasha.rawgio.core.R.drawable.icon_favorites)
+                        AppCompatResources.getDrawable(this@DetailActivity, com.aditasha.rawgio.core.R.drawable.icon_favorites)
                     binding.fab.setOnClickListener {
                         detailViewModel.deleteFavorite(game.id)
                         val message = getString(R.string.remove_favorite, game.name)
@@ -166,5 +172,9 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    companion object {
+        const val GAME_DETAIL = "game"
     }
 }

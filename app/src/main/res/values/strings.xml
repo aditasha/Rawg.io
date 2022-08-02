@@ -36,4 +36,7 @@
     <string name="success_module">Success installing module</string>
     <string name="error_module">Error installing module</string>
     <string name="module_class_name">com.aditasha.rawgio.favorites.FavoriteActivity</string>
+
+    <string name="background_img">Background image</string>
+    <string name="expand_collapse">Expand collapse text arrow</string>
 </resources>

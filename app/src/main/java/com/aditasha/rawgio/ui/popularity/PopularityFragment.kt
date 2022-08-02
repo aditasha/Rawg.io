@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -28,13 +27,14 @@ import com.aditasha.rawgio.core.utils.DataMapper
 import com.aditasha.rawgio.databinding.FragmentHomeBinding
 import com.aditasha.rawgio.ui.SharedViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 
+@AndroidEntryPoint
 class PopularityFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
-    private val gameAdapter = GameListAdapter()
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -49,15 +49,16 @@ class PopularityFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        setupRecycler()
-        setupAdapter()
-        fetchData()
-        clickListener()
+        val gameAdapter = GameListAdapter()
+        setupRecycler(gameAdapter)
+        setupAdapter(gameAdapter)
+        fetchData(gameAdapter)
+        clickListener(gameAdapter)
 
         return root
     }
 
-    private fun setupRecycler() {
+    private fun setupRecycler(gameAdapter: GameListAdapter) {
         binding.apply {
             gameRecycler.apply {
                 setHasFixedSize(true)
@@ -70,7 +71,10 @@ class PopularityFragment : Fragment() {
             }
         }
 
-        binding.swipeRefresh.setOnRefreshListener { gameAdapter.refresh() }
+        binding.swipeRefresh.setOnRefreshListener {
+            gameAdapter.refresh()
+            binding.swipeRefresh.isRefreshing = false
+        }
 
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             gameAdapter.loadStateFlow
@@ -78,17 +82,17 @@ class PopularityFragment : Fragment() {
                 .collect {
                     val isLoading = it.refresh is LoadState.Loading
                     val isNotLoading = it.refresh is LoadState.NotLoading
-                    binding.swipeRefresh.isRefreshing = isLoading
-                    binding.gameRecycler.isVisible = isNotLoading
                     binding.gameRecycler.post {
                         if (isLoading)
                             binding.gameRecycler.smoothScrollToPosition(0)
+                        binding.gameRecycler.isVisible = isNotLoading
+                        binding.loading.isVisible = isLoading
                     }
                 }
         }
     }
 
-    private fun setupAdapter() {
+    private fun setupAdapter(gameAdapter: GameListAdapter) {
         gameAdapter.stateRestorationPolicy =
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
@@ -109,7 +113,7 @@ class PopularityFragment : Fragment() {
         }
     }
 
-    private fun fetchData() {
+    private fun fetchData(gameAdapter: GameListAdapter) {
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 sharedViewModel.gameList
@@ -120,7 +124,7 @@ class PopularityFragment : Fragment() {
         }
     }
 
-    private fun clickListener() {
+    private fun clickListener(gameAdapter: GameListAdapter) {
         gameAdapter.setOnItemClickCallback(object : GameListAdapter.OnItemClickCallback {
 
             override fun onItemClicked(game: GamePresentation) {
@@ -130,28 +134,23 @@ class PopularityFragment : Fragment() {
                             when (it) {
                                 is Resource.Loading -> {
                                     showLoading(true)
-                                    showFailed(false, "")
+                                    showFailed(false, "", gameAdapter)
                                 }
 
                                 is Resource.Error -> {
                                     showLoading(false)
-                                    showFailed(true, it.message.toString())
+                                    showFailed(true, it.message.toString(), gameAdapter)
                                 }
 
                                 else -> {
                                     showLoading(false)
-                                    showFailed(false, "")
+                                    showFailed(false, "", gameAdapter)
 
                                     if (it.data != null) {
                                         val gameDetail =
                                             DataMapper.mapDomainToPresentation(it.data!!)
                                         gameDetail.screenshots = game.screenshots
 
-                                        Toast.makeText(
-                                            requireActivity(),
-                                            "succes getting data",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
                                         val action =
                                             PopularityFragmentDirections.actionNavigationPopularityToDetailActivity(
                                                 gameDetail
@@ -166,27 +165,34 @@ class PopularityFragment : Fragment() {
         })
     }
 
-    private fun showFailed(isFailed: Boolean, e: String) {
+    private fun showFailed(isFailed: Boolean, e: String, gameAdapter: GameListAdapter) {
         if (isFailed) {
             val text = getString(R.string.error, e)
-            errorDialog(text).show()
+            errorDialog(text, gameAdapter).show()
         }
     }
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            binding.loading.visibility = View.VISIBLE
-            binding.gameRecycler.visibility = View.INVISIBLE
+            binding.apply {
+                gameRecycler.isVisible = false
+                loading.isVisible = true
+                swipeRefresh.isRefreshing = true
+            }
         } else {
-            binding.loading.visibility = View.INVISIBLE
-            binding.gameRecycler.visibility = View.VISIBLE
+            binding.apply {
+                gameRecycler.isVisible = true
+                loading.isVisible = false
+                swipeRefresh.isRefreshing = false
+            }
         }
     }
 
-    private fun errorDialog(e: String): MaterialAlertDialogBuilder {
+    private fun errorDialog(e: String, gameAdapter: GameListAdapter): MaterialAlertDialogBuilder {
         return MaterialAlertDialogBuilder(requireActivity())
             .setMessage(e)
             .setPositiveButton(resources.getString(R.string.close_dialog)) { dialog, _ ->
+                gameAdapter.retry()
                 dialog.dismiss()
             }
     }

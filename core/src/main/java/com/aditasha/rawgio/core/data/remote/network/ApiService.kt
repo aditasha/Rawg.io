@@ -1,5 +1,6 @@
 package com.aditasha.rawgio.core.data.remote.network
 
+import android.os.Build
 import com.aditasha.rawgio.core.BuildConfig
 import com.aditasha.rawgio.core.data.remote.responses.GamesListResponse
 import com.aditasha.rawgio.core.data.remote.responses.GamesResultItem
@@ -41,6 +42,10 @@ interface ApiService {
     ): GamesResultItem
 
     companion object {
-        val toCurrentDate = "1960-01-01,${LocalDate.now()}"
+        val toCurrentDate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            "1960-01-01,${LocalDate.now()}"
+        } else {
+            TODO("VERSION.SDK_INT < O")
+        }
     }
 }

@@ -13,17 +13,24 @@ android {
     defaultConfig {
         minSdk 21
         targetSdk 32
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
         buildConfigField "String", "RAWG_URL", "\"https://api.rawg.io/api/\""
+        buildConfigField "String", "RAWG_HOSTNAME", "\"api.rawg.io\""
         buildConfigField "String", "API_KEY", "\"a752a88dc3554013b99e9fdf52786b43\""
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -42,6 +49,7 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api "androidx.room:room-runtime:${rootProject.ext.roomVersion}"
     kapt "androidx.room:room-compiler:${rootProject.ext.roomVersion}"
@@ -62,6 +70,7 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:${rootProject.ext.pagingVersion}"
     implementation "androidx.room:room-paging:${rootProject.ext.roomVersion}"
 
-    implementation "androidx.datastore:datastore-preferences:${rootProject.ext.dataPreferencesVersion}"
+    implementation "net.zetetic:android-database-sqlcipher:$sqlCipher_version"
+    implementation "androidx.sqlite:sqlite-ktx:$sqliteKtx_version"
 
 }

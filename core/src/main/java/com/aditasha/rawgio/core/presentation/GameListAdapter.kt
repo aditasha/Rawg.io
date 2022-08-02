@@ -36,7 +36,7 @@ class GameListAdapter :
         }
     }
 
-    inner class MyViewHolder(val binding: ItemListGamesBinding) :
+    inner class MyViewHolder(private val binding: ItemListGamesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: GamePresentation, position: Int) {
             val color = ContextCompat.getColor(itemView.context, R.color.white)

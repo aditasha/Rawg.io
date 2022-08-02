@@ -4,4 +4,6 @@
     <string name="genres_list_games">Genres\n%1$s</string>
     <string name="retry_list_games">Retry</string>
     <string name="close_dialog_list_games">Close</string>
+
+    <string name="background_img">Background image</string>
 </resources>
