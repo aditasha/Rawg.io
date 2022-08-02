@@ -14,6 +14,8 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 -->
+# RAWG.IO
+[![aditasha](https://circleci.com/gh/aditasha/rawg.io-app.svg?style=svg)](https://circleci.com/gh/aditasha/rawg.io-app)
 
 
 
