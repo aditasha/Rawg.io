@@ -48,40 +48,6 @@ jobs:
       - store_artifacts:
           path: ~/test-results/junit
           
-  android-test:
-    parameters:
-      system-image:
-        type: string
-        default: system-images;android-30;google_apis;x86
-        
-    executor: 
-      name: android/android-machine
-      tag: 2021.10.1
-      
-    steps:
-      - checkout
-      - run:
-          name: Chmod permissions
-          command: sudo chmod +x ./gradlew
-          
-      - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-          
-      - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: << parameters.system-image >>
-      - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/test-results/junit/
-            find . -type f -regex ".*/build/outputs/androidTest-results/.*xml" -exec cp {} ~/test-results/junit/ \;
-          when: always
-      - store_test_results:
-          path: ~/test-results
-      - store_artifacts:
-          path: ~/test-results/junit
-          
   release-build:
     executor:
       name: android/android-machine
@@ -113,21 +79,6 @@ workflows:
     jobs:
       - vulnachecka/scan
       - unit-test
-      - android-test:
-          matrix:
-            alias: android-test-all
-            parameters:
-              system-image:
-                - system-images;android-30;google_apis;x86
-                - system-images;android-29;google_apis;x86
-                - system-images;android-28;google_apis;x86
-                - system-images;android-27;google_apis;x86
-                - system-images;android-26;google_apis;x86
-                - system-images;android-25;google_apis;x86
-                - system-images;android-24;google_apis;x86
-                - system-images;android-23;google_apis;x86
-          name: android-test-<<matrix.system-image>>
       - release-build:
           requires:
             - unit-test
-            - android-test-all
