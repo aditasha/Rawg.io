@@ -14,7 +14,9 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build-and-test:
-    executor: android/android
+    executor: 
+      name: android/android-machine
+      tag: 2021.10.1
     steps:
       - checkout
       
