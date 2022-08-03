@@ -89,7 +89,9 @@ class FavoriteActivity : AppCompatActivity() {
                         binding.lottie.isVisible = true
                     }
                     val array = arrayListOf<FavoritePresentation>()
-                    list.forEach { array.add(it) }
+                    for (l in list) {
+                        array.add(l)
+                    }
                     favoriteGameAdapter.addData(array)
                 }
             }
