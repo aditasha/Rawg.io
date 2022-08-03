@@ -30,6 +30,13 @@ android {
         jvmTarget = '1.8'
     }
 
+    lintOptions {
+        // Menonaktikan Issue ID yang disebutkan.
+        disable 'TypographyFractions','TypographyQuotes','Typos'
+        // Jika true, hanya memberikan report eror.
+        ignoreWarnings true
+    }
+
     buildFeatures {
         viewBinding true
     }
