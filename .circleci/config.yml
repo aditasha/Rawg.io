@@ -23,9 +23,9 @@ jobs:
       - run:
           name: Add Local Properties
           command: 
-            echo "rawg_url=$RAWG_URL" >> ~/local.properties
-            echo "rawg_hostname=$RAWG_HOSTNAME" >> ~/local.properties
-            echo "api_key=$API_KEY" >> ~/local.properties
+            echo "rawg_url=$RAWG_URL" >> local.properties
+            echo "rawg_hostname=$RAWG_HOSTNAME" >> local.properties
+            echo "api_key=$API_KEY" >> local.properties
       
       - restore_cache:
           key: android-orb-v1-
