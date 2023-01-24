@@ -20,6 +20,12 @@ jobs:
     steps:
       - checkout
       
+      - run: echo "rawg_url=$RAWG_URL" >> ~/local.properties
+
+      - run: echo "rawg_hostname=$RAWG_HOSTNAME" >> ~/local.properties
+
+      - run: echo "api_key=$API_KEY" >> ~/local.properties
+      
       - restore_cache:
           key: android-orb-v1-
           
