@@ -87,7 +87,7 @@ Provided from
 <!-- CONTACT -->
 ## Contact
 
-- Aditasha | [Twitter](https://twitter.com/aditashaa) | aditasha9@gmail.com
+- Aditasha | aditasha9@gmail.com
 
 Project Link: [https://github.com/aditasha/rawg.io-app](https://github.com/aditasha/rawg.io-app)
 
