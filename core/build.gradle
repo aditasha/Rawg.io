@@ -7,6 +7,9 @@ plugins {
 }
 apply from: '../shared_dependencies.gradle'
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
 android {
     compileSdk 32
 
@@ -19,9 +22,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        buildConfigField "String", "RAWG_URL", "\"https://api.rawg.io/api/\""
-        buildConfigField "String", "RAWG_HOSTNAME", "\"api.rawg.io\""
-        buildConfigField "String", "API_KEY", "\"a752a88dc3554013b99e9fdf52786b43\""
+        buildConfigField "String", "RAWG_URL", "\"" + localProperties['rawg_url'] + "\""
+        buildConfigField "String", "RAWG_HOSTNAME", "\"" + localProperties['rawg_hostname'] + "\""
+        buildConfigField "String", "API_KEY", "\"" + localProperties['api_key'] + "\""
     }
 
     buildTypes {
